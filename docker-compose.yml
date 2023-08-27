@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  jupyter:
+    container_name: jupyter
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - JUPYTER_IMAGE
+    restart: always
+    env_file:
+      - ./jupyter.env
+    volumes:
+      - ./notebooks:/home/jovyan/notebooks
+      - ./src:/home/jovyan/src
+      - ./data:/home/jovyan/data
+      - ./reports:/home/jovyan/reports
+    ports:
+      - 8888:8888
+      - 4040:4040
+    networks:
+      - jupyter-starter
+
+networks:
+  jupyter-starter:
+    name: jupyter-starter
+    driver: bridge
