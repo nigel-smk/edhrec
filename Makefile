@@ -8,7 +8,7 @@ jupyter-stop:
 	docker-compose down
 
 pip-install:
-	docker exec -it jupyter pip install -r ../src/requirements.txt
+	docker exec -it jupyter pip install -r ./src/requirements.txt
 
 shell:
 	docker exec -it jupyter bash
